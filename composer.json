@@ -18,7 +18,8 @@
     },
     "require": {
         "php": ">=7.0",
-        "liugj/arch-client-php": "^1.0"
+        "guzzlehttp/guzzle": "^6.2",
+        "liugj/helpers": "~1"
     },
     "require-dev": {
         "phpunit/phpunit": "~5",

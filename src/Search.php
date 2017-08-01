@@ -9,18 +9,8 @@
 
 namespace Bqrd\OpenApi\Search;
 
-use Liugj\Arch\Index;
-
-class Search
+class Search extends Api
 {
-    /**
-     * index 
-     * 
-     * @var mixed
-     * @access protected
-     */
-    protected $index = null;
-
     /**
      * __construct 
      * 
@@ -33,7 +23,7 @@ class Search
      */
     public function __construct(string $baseUri, array $options)
     {
-        $this->index = new Index($baseUri, $options);    
+        parent::__construct($baseUri, $options);    
     }
 
 
@@ -47,8 +37,43 @@ class Search
      * 
      * @return mixed
      */
-    public function get(array $params, array $headers = [])
+    public function get(array $param, array $headers = [])
     {
-        return $this->index->get($params, $headers);
+         $query = array_intersect_key($param, array_flip([
+                   'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
+                   'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range',
+                  ])
+        );
+        $query['highlight'] = 'pname';
+        $query['facets'] = 'brandid,c3,p';
+        $query['format'] = 'json';
+        $response = $this->restClient->get('search', $query, $headers)->toArray();
+        $fields = [
+             'product' => [
+                 'id' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
+                 'sales' => 'sales',  'commentnum' => 'commentnum',
+                 'stock' => 'inventory', 'upstatus' => 'upstatus', 'newcast' => 'newcast',
+                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
+                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
+              ],
+              'brand' => ['id' => 'brandid', 'brandname' => 'brandname'],
+              'product_category' => ['cid' => 'c3'],
+              'photo' => ['pid' => 'id', 'picpath' => 'picpath'],
+        ];
+        $response['result'] = array_map(function ($product) use ($fields) {
+            $value = [];
+            foreach ($fields as $key => $columns) {
+                foreach ($columns as $keyCol => $column) {
+                    $value[$key][$keyCol] = $product[$column] ?? '';
+                }
+            }
+            return $value;
+        }, $response);
+        return \Liugj\Helpers\array_key_exchange($response,
+                [
+                    'result' => 'list', 'total' => 'total', 'facets' => 'facets',
+                    'crumbs' => 'crumbs', 'count' => 'count', 'keyword' => 'Keyword',
+                ]
+        );
     }
 }
