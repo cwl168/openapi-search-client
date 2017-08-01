@@ -8,7 +8,8 @@
  * with this source code in the file LICENSE.
  */
 namespace Bqrd\OpenApi\Search;
-use Bqrd\OpenApi\Search\RestClient;
+
+use Liugj\Arch\RestClient;
 
 class Api
 {
