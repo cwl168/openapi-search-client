@@ -48,7 +48,32 @@ class Product extends Api
         $query['facets'] = 'brandid,c3,p';
         $query['format'] = 'json';
 
-        return ['result' => $this->restClient->get('product/search', $query, $headers)->toArray()];
+        $response = $this->restClient->get('product/search', $query, $headers)->toArray();
+        $fields = [
+             'product' => [
+                 'id' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
+                 'sales' => 'sales',  'commentnum' => 'commentnum',
+                 'stock' => 'inventory', 'upstatus' => 'upstatus', 'newcast' => 'newcast',
+                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
+                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
+              ],
+              'brand' => ['id' => 'brandid', 'brandname' => 'brandname'],
+              'product_category' => ['cid' => 'cid'],
+              'photo' => ['pid' => 'pid', 'picpath' => 'picpath'],
+        ];
+        $response['list'] = array_map(function ($product) use ($fields) {
+            $value = [];
+            foreach ($fields as $key => $columns) {
+                foreach ($columns as $keyCol => $column) {
+                    $value[$key][$keyCol] = $key == 'product' ?
+                         ($product[$column] ?? '') : ($product[$keyCol][$column] ?? '');
+                }
+            }
+
+            return $value;
+        }, $response['list']);
+
+        return $response;
     }
 
     /**

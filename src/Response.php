@@ -99,7 +99,7 @@ class Response implements Iterator, ArrayAccess
     {
         $json = json_decode($this->body, $assoc);
         if (!$json) {
-            throw new Bqrd\OpenApi\Search\Exception\JsonDecode(json_last_error_msg());
+            throw new \Bqrd\OpenApi\Search\Exception\JsonDecode(json_last_error_msg());
         }
         return $json;
     }
@@ -228,7 +228,7 @@ class Response implements Iterator, ArrayAccess
      */
     public function offsetSet($key, $value)
     {
-        throw new Bqrd\OpenApi\Search\Exception\ArrayAccess('Decoded response data is immutable.');
+        throw new \Bqrd\OpenApi\Search\Exception\ArrayAccess('Decoded response data is immutable.');
     }
 
     /**
@@ -240,7 +240,7 @@ class Response implements Iterator, ArrayAccess
      */
     public function offsetUnset($key)
     {
-        throw new Bqrd\OpenApi\Search\Exception\ArrayAccess('Decoded response data is immutable.');
+        throw new \Bqrd\OpenApi\Search\Exception\ArrayAccess('Decoded response data is immutable.');
     }
 
     /**
