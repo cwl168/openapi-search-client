@@ -1,0 +1,1 @@
+# openapi-search-client
