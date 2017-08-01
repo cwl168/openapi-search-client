@@ -7,11 +7,11 @@
  * with this source code in the file LICENSE.
  */
 
-use Bqrd\OpenApi\Search\Search;
+use Bqrd\OpenApi\Search\Product;
 
 use PHPUnit\Framework\TestCase;
 
-class ClientTestCase extends TestCase
+class ProductTestCase extends TestCase
 {
     /**
      * options.
@@ -51,10 +51,24 @@ class ClientTestCase extends TestCase
      *
      * @return mixed
      */
-    public function testSearch()
+    public function testGet()
     {
         $params = ['p' => 1, 'ps' => 12, 'q' => '狗粮', 'price' => 1, 'site_source' => 'shop'];
-        $response = (new Search($this->url, $this->options))->get($params);
+        $response = (new Product($this->url, $this->options))->get($params);
         var_dump($response);
+    }
+
+    /**
+     * testPut 
+     * 
+     * 
+     * @access public
+     * 
+     * @return mixed
+     */
+    public function testPut()
+    {
+        $product = ['productid' => 12345, 'inventory' => 1200];    
+        $response = (new Product($this->url, $this->options))->put($product);
     }
 }

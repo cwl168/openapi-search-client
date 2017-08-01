@@ -48,7 +48,7 @@ class Product extends Api
         $query['facets'] = 'brandid,c3,p';
         $query['format'] = 'json';
 
-        return ['result' => $this->restClient->get('search', $query, $headers)->toArray()];
+        return ['result' => $this->restClient->get('product/search', $query, $headers)->toArray()];
     }
 
     /**
@@ -60,8 +60,8 @@ class Product extends Api
      * 
      * @return mixed
      */
-    public function put($product)
+    public function put($product, array $headers = [])
     {
-        return $this->restClient->put($product)->toArray();
+        return $this->restClient->put('product', $product, $headers)->toArray();
     }
 }
