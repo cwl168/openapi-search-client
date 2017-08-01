@@ -9,10 +9,10 @@
 
 namespace Bqrd\OpenApi\Providers;
 
-use Bqrd\OpenApi\Search\Search;
+use Bqrd\OpenApi\Search\Product;
 use Illuminate\Support\ServiceProvider;
 
-class SearchServiceProvider extends ServiceProvider
+class ProductServiceProvider extends ServiceProvider
 {
     /**
      * defer.
@@ -30,11 +30,11 @@ class SearchServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(Search::class, function ($app) {
+        $this->app->singleton(Product::class, function ($app) {
             $app->configure('openapi-search-client');
             $config = $app->make('config')->get('openapi-search-client');
 
-            return new Search($config['baseUri'], $config['options']);
+            return new Product($config['baseUri'], $config['options']);
         });
     }
 
@@ -47,6 +47,6 @@ class SearchServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Search::class];
+        return [Product::class];
     }
 }

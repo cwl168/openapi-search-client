@@ -9,10 +9,10 @@
 
 namespace Bqrd\OpenApi\Search\Facades;
 
-use Bqrd\OpenApi\Search\Search as OpenApiSearch;
+use Bqrd\OpenApi\Search\Product as OpenApiProduct;
 use Illuminate\Support\Facades\Facade;
 
-class Search extends Facade
+class Product extends Facade
 {
     /**
      * getFacadeAccessor.
@@ -23,6 +23,6 @@ class Search extends Facade
      */
     public static function getFacadeAccessor()
     {
-        return OpenApiSearch::class;
+        return OpenApiProduct::class;
     }
 }
