@@ -48,7 +48,7 @@ class Product extends Api
              'product' => [
                  'productid' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
                  'sales' => 'sales',  'commentnum' => 'commentnum',
-                 'inventory' => 'inventory', 'upstatus' => 'upstatus', 'price' => 'price',
+                 'inventory' => 'stock', 'upstatus' => 'upstatus', 'price' => 'price',
                  'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
               ],
