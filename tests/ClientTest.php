@@ -59,16 +59,15 @@ class ProductTestCase extends TestCase
     }
 
     /**
-     * testPut 
-     * 
-     * 
-     * @access public
-     * 
+     * testPut.
+     *
+     *
+     *
      * @return mixed
      */
     public function testPut()
     {
-        $product = ['productid' => 12345, 'inventory' => 1200];    
+        $product = ['productid' => 12345, 'inventory' => 1200];
         $response = (new Product($this->url, $this->options))->put($product);
     }
 }

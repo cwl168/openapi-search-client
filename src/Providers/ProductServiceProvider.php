@@ -7,7 +7,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Bqrd\OpenApi\Providers;
+namespace Bqrd\OpenApi\Search\Providers;
 
 use Bqrd\OpenApi\Search\Product;
 use Illuminate\Support\ServiceProvider;
