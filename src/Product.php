@@ -48,7 +48,7 @@ class Product extends Api
         $fields = [
              'product' => [
                  'productid' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
-                 'sales' => 'sales',  'commentnum' => 'commentnum',
+                 'sales' => 'sales',  'commentnum' => 'commentnum', 'cast'=>'cast', 'newcast'=>'newcast',
                  'inventory' => 'stock', 'upstatus' => 'upstatus', 'price' => 'price',
                  'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
