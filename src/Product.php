@@ -39,10 +39,9 @@ class Product extends Api
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
                    'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range',
-                   'productid', //测试使用
+                   'facets', 'productid', //测试使用
+                   
                   ]));
-        $query['highlight'] = 'pname';
-        $query['facets'] = 'brandid,c3,p';
 
         $response = $this->restClient->get('product/search', $query, $headers)->toArray();
         $fields = [
