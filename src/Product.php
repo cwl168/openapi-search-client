@@ -27,6 +27,19 @@ class Product extends Api
     }
 
     /**
+     * 批量获取根据ID获取商品信息.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return mixed
+     */
+    public function multi(array $param, array $headers = [], string $uri = 'product/multi')
+    {
+        return $this->get($param, $headers, $uri);
+    }
+
+    /**
      * get.
      *
      * @param array $params
@@ -34,20 +47,20 @@ class Product extends Api
      *
      * @return mixed
      */
-    public function get(array $param, array $headers = [])
+    public function get(array $param, array $headers = [], string $uri = 'product/search')
     {
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
-                   'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range',
+                   'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range', 'id',
                    'facets', 'productid', //测试使用
-                   
+
                   ]));
 
-        $response = $this->restClient->get('product/search', $query, $headers)->toArray();
+        $response = $this->restClient->get($uri, $query, $headers)->toArray();
         $fields = [
              'product' => [
                  'productid' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
-                 'sales' => 'sales',  'commentnum' => 'commentnum', 'cast'=>'cast', 'newcast'=>'newcast',
+                 'sales' => 'sales',  'commentnum' => 'commentnum', 'cast' => 'cast', 'newcast' => 'newcast',
                  'inventory' => 'stock', 'upstatus' => 'upstatus', 'price' => 'price',
                  'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
