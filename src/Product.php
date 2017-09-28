@@ -40,6 +40,19 @@ class Product extends Api
     }
 
     /**
+     * 获取某一品牌下商品数量.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return mixed
+     */
+    public function getBrandCount(array $param, array $headers = [])
+    {
+        return  $this->restClient->get('product/brand/count', $param, $headers)->toArray();
+    }
+
+    /**
      * get.
      *
      * @param array $params
