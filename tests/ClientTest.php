@@ -70,4 +70,11 @@ class ProductTestCase extends TestCase
         $product = ['productid' => 12345, 'inventory' => 1200];
         $response = (new Product($this->url, $this->options))->put($product);
     }
+
+    public function testThirdCateAndBrand()
+    {
+        $params = ['secondCateId' => 715];
+        $response = (new Product($this->url, $this->options))->thirdCateAndBrand($params);
+        var_dump($response);
+    }
 }

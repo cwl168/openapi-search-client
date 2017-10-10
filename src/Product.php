@@ -113,4 +113,19 @@ class Product extends Api
     {
         return $this->restClient->put('product', $product, $headers)->toArray();
     }
+
+    /**
+     * thirdCateAndBrand 
+     * 
+     * @param mixed $param 
+     * @param array $headers 
+     * 
+     * @access public
+     * 
+     * @return mixed
+     */
+    public function thirdCateAndBrand($param, array $headers = [])
+    {
+        return $this->restClient->get('product/thirdCateAndBrand', $param, $headers);
+    }
 }
