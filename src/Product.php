@@ -89,7 +89,7 @@ class Product extends Api
             return $response;
         }
 
-        if (!in_array($response['type'], [2, 3])) {
+        if (in_array($response['type'], [2, 3])) {
             $response['list'] = array_map(function ($products) use ($fields) {
                 return $this->convert($products, $fields);
             }, $response['list']);
