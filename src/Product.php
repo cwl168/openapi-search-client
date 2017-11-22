@@ -84,24 +84,48 @@ class Product extends Api
               'product_category' => ['cid' => 'cid'],
               'photo' => ['pid' => 'pid', 'picpath' => 'picpath'],
         ];
-        $response['list'] = array_map(function ($product) use ($fields) {
-            $value = [];
-            foreach ($fields as $key => $columns) {
-                if ($key == 'product') {
-                    foreach ($columns as $from => $to) {
-                        $value[$key][$to] = $product[$from];
-                    }
-                } else {
-                    foreach ($columns as $from => $to) {
-                        $value[$key][$to] = $product[$key][$from];
-                    }
-                }
-            }
-
-            return $value;
-        }, $response['list']);
+        if ($response['type'] == 1) {
+            return $response;
+        }
+        if (!in_array($response['type'], [2, 3])) {
+            $response['list'] = array_map(function($products) use($fields) {
+                return $this->convert($products, $fields);
+                },$response['list']);
+        }else{
+            $response['list'] = $this->convert($response['list'], $fields);
+        }
 
         return $response;
+    }
+
+    /**
+     * Key 转化 covert 
+     * 
+     * @param array $params  输入商品列表
+     * @param array $fields  keys 映射
+     * 
+     * @access protected
+     * 
+     * @return mixed
+     */
+    protected function covert(array $params=[], array $fields=[])
+    {
+            return  array_map(function ($product) use ($fields) {
+                 $value = [];
+                 foreach ($fields as $key => $columns) {
+                     if ($key == 'product') {
+                         foreach ($columns as $from => $to) {
+                             $value[$key][$to] = $product[$from];
+                         }
+                     } else {
+                         foreach ($columns as $from => $to) {
+                             $value[$key][$to] = $product[$key][$from];
+                         }
+                     }
+                 }
+
+                 return $value;
+             }, $params);
     }
 
     /**
