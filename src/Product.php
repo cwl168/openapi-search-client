@@ -110,22 +110,22 @@ class Product extends Api
      */
     protected function covert(array $params=[], array $fields=[])
     {
-            return  array_map(function ($product) use ($fields) {
-                 $value = [];
-                 foreach ($fields as $key => $columns) {
-                     if ($key == 'product') {
-                         foreach ($columns as $from => $to) {
-                             $value[$key][$to] = $product[$from];
-                         }
-                     } else {
-                         foreach ($columns as $from => $to) {
-                             $value[$key][$to] = $product[$key][$from];
-                         }
-                     }
-                 }
+       return  array_map(function ($product) use ($fields) {
+            $value = [];
+            foreach ($fields as $key => $columns) {
+                if ($key == 'product') {
+                    foreach ($columns as $from => $to) {
+                        $value[$key][$to] = $product[$from];
+                    }
+                } else {
+                    foreach ($columns as $from => $to) {
+                        $value[$key][$to] = $product[$key][$from];
+                    }
+                }
+            }
 
-                 return $value;
-             }, $params);
+            return $value;
+        }, $params);
     }
 
     /**
