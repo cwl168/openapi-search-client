@@ -87,11 +87,12 @@ class Product extends Api
         if ($response['type'] == 1) {
             return $response;
         }
+
         if (!in_array($response['type'], [2, 3])) {
-            $response['list'] = array_map(function($products) use($fields) {
+            $response['list'] = array_map(function ($products) use ($fields) {
                 return $this->convert($products, $fields);
-                },$response['list']);
-        }else{
+            }, $response['list']);
+        } else {
             $response['list'] = $this->convert($response['list'], $fields);
         }
 
@@ -99,18 +100,16 @@ class Product extends Api
     }
 
     /**
-     * Key 转化 covert 
-     * 
-     * @param array $params  输入商品列表
-     * @param array $fields  keys 映射
-     * 
-     * @access protected
-     * 
+     * Key 转化 covert.
+     *
+     * @param array $params 输入商品列表
+     * @param array $fields keys 映射
+     *
      * @return mixed
      */
-    protected function covert(array $params=[], array $fields=[])
+    protected function covert(array $params = [], array $fields = []) : array
     {
-       return  array_map(function ($product) use ($fields) {
+        return  array_map(function ($product) use ($fields) {
             $value = [];
             foreach ($fields as $key => $columns) {
                 if ($key == 'product') {
@@ -141,13 +140,11 @@ class Product extends Api
     }
 
     /**
-     * thirdCateAndBrand 
-     * 
-     * @param mixed $param 
-     * @param array $headers 
-     * 
-     * @access public
-     * 
+     * thirdCateAndBrand.
+     *
+     * @param mixed $param
+     * @param array $headers
+     *
      * @return mixed
      */
     public function thirdCateAndBrand($param, array $headers = [])
