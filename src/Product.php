@@ -83,6 +83,7 @@ class Product extends Api
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
               'photo' => ['pid' => 'pid', 'picpath' => 'picpath'],
+              'cover' => ['img' => 'img', 'is_show' => 'is_show'],
         ];
         if ($response['type'] == 1) {
             return $response;
