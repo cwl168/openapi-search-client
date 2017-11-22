@@ -108,7 +108,7 @@ class Product extends Api
      *
      * @return mixed
      */
-    protected function covert(array $params = [], array $fields = []) : array
+    protected function convert(array $params = [], array $fields = []) : array
     {
         return  array_map(function ($product) use ($fields) {
             $value = [];
