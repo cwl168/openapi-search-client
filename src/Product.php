@@ -75,7 +75,7 @@ class Product extends Api
                  'productid' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
                  'sales' => 'sales',  'commentnum' => 'commentnum', 'cast' => 'cast', 'newcast' => 'newcast',
                  'inventory' => 'stock', 'upstatus' => 'upstatus', 'price' => 'price',
-                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace',
+                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace', 'attr'=>'attr',
                  'pname_highlight' => 'pname_highlight', 'cretime' => 'cretime', 'month_sales' => 'month_sales',
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
