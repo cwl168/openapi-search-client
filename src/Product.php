@@ -51,6 +51,18 @@ class Product extends Api
     {
         return  $this->restClient->get('product/brand/count', $param, $headers)->toArray();
     }
+    /**
+     * 获取联想词.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return mixed
+     */
+    public function suggest(array $param, array $headers = [])
+    {
+        return  $this->restClient->get('product/suggest', $param, $headers)->toArray();
+    }
 
     /**
      * get.
