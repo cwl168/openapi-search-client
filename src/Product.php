@@ -90,7 +90,7 @@ class Product extends Api
                  'isglobal' => 'isglobal', 'is_replace' => 'is_replace', 'attr'=>'attr',
                  'pname_highlight' => 'pname_highlight', 'cretime' => 'cretime', 'month_sales' => 'month_sales',
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
-                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity','net_weight',
+                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity','net_weight'
               ],
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
