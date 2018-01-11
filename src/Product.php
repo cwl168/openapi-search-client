@@ -91,6 +91,7 @@ class Product extends Api
                  'pname_highlight' => 'pname_highlight', 'cretime' => 'cretime', 'month_sales' => 'month_sales',
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity','net_weight' => 'net_weight',
+                 'purchase_agent_type' => 'purchase_agent_type',
               ],
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
