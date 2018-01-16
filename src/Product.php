@@ -128,7 +128,7 @@ class Product extends Api
             foreach ($fields as $key => $columns) {
                 if ($key == 'product') {
                     foreach ($columns as $from => $to) {
-                        $value[$key][$to] = $product[$from];
+                        $value[$key][$to] = $product[$from] ?? '';
                     }
                 } else {
                     foreach ($columns as $from => $to) {
