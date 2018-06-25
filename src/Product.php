@@ -77,7 +77,7 @@ class Product extends Api
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
                    'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range', 'id',
-                   'facets', 'productid', //测试使用
+                   'facets', 'productid', 'ifnewgoods',//测试使用
 
                   ]));
 
@@ -90,7 +90,7 @@ class Product extends Api
                  'isglobal' => 'isglobal', 'is_replace' => 'is_replace', 'attr'=>'attr',
                  'pname_highlight' => 'pname_highlight', 'cretime' => 'cretime', 'month_sales' => 'month_sales',
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
-                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity',
+                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity', 'uptime'=>'uptime',
               ],
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
