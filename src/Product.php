@@ -51,6 +51,7 @@ class Product extends Api
     {
         return  $this->restClient->get('product/brand/count', $param, $headers)->toArray();
     }
+
     /**
      * 获取联想词.
      *
@@ -77,7 +78,7 @@ class Product extends Api
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
                    'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range', 'id',
-                   'facets', 'productid', 'ifnewgoods',//测试使用
+                   'facets', 'productid', 'ifnewgoods', //测试使用
 
                   ]));
 
@@ -87,10 +88,11 @@ class Product extends Api
                  'productid' => 'id', 'pname' => 'pname', 'subtitle' => 'subtitle',
                  'sales' => 'sales',  'commentnum' => 'commentnum', 'cast' => 'cast', 'newcast' => 'newcast',
                  'inventory' => 'stock', 'upstatus' => 'upstatus', 'price' => 'price',
-                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace', 'attr'=>'attr',
+                 'isglobal' => 'isglobal', 'is_replace' => 'is_replace', 'attr' => 'attr',
                  'pname_highlight' => 'pname_highlight', 'cretime' => 'cretime', 'month_sales' => 'month_sales',
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
-                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity', 'uptime'=>'uptime',
+                 'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity', 'net_weight' => 'net_weight',
+                 'purchase_agent_type' => 'purchase_agent_type', 'uptime' => 'uptime',
               ],
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
@@ -127,7 +129,7 @@ class Product extends Api
             foreach ($fields as $key => $columns) {
                 if ($key == 'product') {
                     foreach ($columns as $from => $to) {
-                        $value[$key][$to] = $product[$from];
+                        $value[$key][$to] = $product[$from] ?? '';
                     }
                 } else {
                     foreach ($columns as $from => $to) {
