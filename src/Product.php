@@ -93,6 +93,7 @@ class Product extends Api
                  'ifhotsale' => 'ifhotsale', 'ifnewgoods' => 'ifnewgoods', 'pcode' => 'pcode', 'views' => 'views',
                  'globalstorage' => 'globalstorage', 'globalcity' => 'globalcity', 'net_weight' => 'net_weight',
                  'purchase_agent_type' => 'purchase_agent_type', 'uptime' => 'uptime',
+                 'is_magicalcard' => 'is_magicalcard',
               ],
               'brand' => ['brandid' => 'brandid', 'brandname' => 'brandname'],
               'product_category' => ['cid' => 'cid'],
