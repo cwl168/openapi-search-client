@@ -78,7 +78,7 @@ class Product extends Api
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
                    'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range', 'id',
-                   'facets', 'productid', 'ifnewgoods', //测试使用
+                   'facets', 'productid', 'ifnewgoods', 'is_magicalcard' //测试使用
 
                   ]));
 
