@@ -78,8 +78,8 @@ class Product extends Api
         $query = array_intersect_key($param, array_flip([
                    'q', 'p', 'ps', 's', 'price', 'site_source', 'brandid', 'cateid', 'coupon',
                    'isstock', 'ifpromotion', 'isglobal', 'attrid', 'source', 'range', 'id',
+                   'tuike_source_type',
                    'facets', 'productid', 'ifnewgoods', 'is_magicalcard','card_level' //测试使用
-
                   ]));
 
         $response = $this->restClient->get($uri, $query, $headers)->toArray();
